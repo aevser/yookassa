@@ -1,0 +1,220 @@
+@import "./../vars";
+
+.quiz {
+  border-radius: 25px;
+  background: $yellow;
+  padding: 27px 30px;
+  min-height: 400px;
+  box-sizing: border-box;
+
+
+  @media screen and (max-width: 1025px) {
+    min-height: unset;
+  }
+  @media screen and (max-width: 769px) {
+    padding: 20px 15px;
+    min-height: unset;
+  }
+
+  &__progress {
+    margin-bottom: 28px;
+  }
+
+  &-progress {
+    display: flex;
+    align-items: center;
+    column-gap: 24px;
+
+    @media screen and (max-width: 769px) {
+      flex-direction: column;row-gap: 15px;
+    }
+
+    &__title {
+      color: #FFF;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    &__items {
+      display: flex;
+      align-items: center;
+      column-gap: 25px;
+    }
+
+    &__item {
+      width: 30px;
+      height: 30px;
+      background-color: rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      position: relative;
+      transition: 0.2s;
+
+
+      @media screen and (max-width: 769px) {
+        width: 25px;
+        height: 25px;
+      }
+
+      & svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        transition: 0.2s;
+
+        &:nth-child(1) {
+          opacity: 1;
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+      }
+
+      &--active {
+        background-color: $white;
+
+        & svg {
+          &:nth-child(1) {
+            opacity: 0;
+          }
+
+          &:nth-child(2) {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  &__question {
+  }
+
+  &-question {
+    &__title {
+      color: #FFF;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      margin-bottom: 25px;
+
+      @media screen and (max-width: 1441px) {
+        font-size: 28px;
+      }
+      @media screen and (max-width: 769px) {
+        font-size: 22px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+    }
+
+    &__items {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      grid-column-gap: 15px;
+      grid-row-gap: 15px;
+      margin-bottom: 30px;
+
+      @media screen and (max-width: 1199px) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
+      @media screen and (max-width: 769px) {
+        display: flex;
+        flex-direction: column;
+        grid-row-gap: 10px;
+        margin-bottom: 25px;
+      }
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      column-gap: 12px;
+      position: relative;
+      padding: 15px;
+      width: 100%;
+      background-color: $white;
+      border-radius: 25px;
+      border: 1px solid #DFDFDF;
+      cursor: pointer;
+      box-sizing: border-box;
+
+      @media screen and (max-width: 769px) {
+        padding: 14px 12px;
+        border-radius: 20px;
+      }
+    }
+
+    &__input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      opacity: 0;
+
+      &:checked {
+        & + .quiz-question__icon {
+          background-color: $yellow;
+        }
+      }
+    }
+
+    &__icon {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(45, 45, 45, 0.2);
+      border-radius: 50%;
+      transition: 0.2s;
+      box-sizing: border-box;
+      padding: 5px;
+
+      @media screen and (max-width: 769px) {
+        width: 22px;
+        height: 22px;
+      }
+    }
+
+    &__text {
+      color: #2D2D2D;
+      font-size: 18px;
+      line-height: 120%;
+
+      @media screen and (max-width: 769px) {
+        font-size: 14px;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+
+    @media screen and (max-width: 769px) {
+     flex-direction: column-reverse;
+      row-gap: 10px;
+    }
+  }
+
+  &__button {
+    max-width: 360px;
+
+    @media screen and (max-width: 1025px) {
+      max-width: 50%;
+    }
+    @media screen and (max-width: 769px) {
+      max-width: 100%;
+    }
+  }
+}
